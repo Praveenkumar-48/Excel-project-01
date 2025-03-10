@@ -1,0 +1,35 @@
+Key answers for Assignment:
+
+
+1. Merge first and last names into a full name column.
+
+=CONCATENATE(C4," ", D4)
+
+
+2. Combine city and state into a single address column.
+
+=TEXTJOIN(", ", TRUE, C11, D11)
+
+3. Join first name, last name, and age into a single cell.
+
+=CONCAT(C17," ",D17," - ",E17)
+
+4. Concatenate a product name with its ID for unique identification.
+
+=CONCATENATE(C24,"   ", D24)
+
+5. Merge date, month, and year into a single date string.
+
+=CONCATENATE(C31," - ",D31," - ",E31)
+
+6. Concatenate department codes with employee IDs for tracking.
+
+=CONCATENATE(C39,"- ",D39)
+
+7. Combine multiple text columns into a structured sentence.
+
+=CONCATENATE(C46," ",D46," ",E46)
+
+8. Create a list of comma-separated email addresses from multiple cells.
+
+=CONCATENATE(C53," , ",C54," , ",C55," , ",C56)
