@@ -1,0 +1,55 @@
+OFFSET Function:
+=================
+
+1. How do you return a value 2 rows below and 1 column to the right of cell A1?
+
+Formula =OFFSET(A4,2,1)
+Answer key: This formula returns the value in B6
+
+2. How can you get a range of 3 rows and 2 columns starting from B2?
+
+Formula =OFFSET(A17,0,0,3,2)
+Answer key: This formula returns the range from A17:B19
+
+3. How do you dynamically get the last row in column A if data length changes?
+
+Formula =MATCH("*", A:A, -1)
+Answer key: This formula returns the value of the last non-empty cell in column A
+
+4. How do you sum the last 5 values in column B dynamically?
+5. How can you create a moving average of the last 3 values in column C?
+
+SUM Function:
+=============
+
+6. How do you sum the range A1:A10?
+
+Formula =SUM(A43:A51)
+Answer key: This formula returns the sum of the values from A43 to A51
+
+7. How do you sum values in B1:B10 only if they are greater than 50?
+
+Formula =SUMIF(A56:A65,">50")
+Answer key: This formula returns the sum of the value which is greater than 50 from A56 to A65
+
+8. How do you sum values in column C if column A contains "Apple"?
+
+Formula =SUMIF(A:A,"APPLE",C:C)
+Answer key: This formula returns the value if the column contains APPLE it will add those values only.
+
+
+MATCH Function:
+===============
+
+9. How do you find the position of value 50 in range D1:D10?
+
+Formula =MATCH(50, A88:A97, 0)
+Answer key: This formula returns the position from A88 to A97 which exactly matches 50, ie, 3(3rd position)
+
+10. How do you find the position of the largest number in column E?
+
+Formula =MATCH(MAX(A:A), A:A, 0)
+Answer key: This formula returns the position of the largest number.
+
+
+
