@@ -1,0 +1,89 @@
+What is the purpose of the SUM_FORMULA, and how does it work?
+
+The main purpose of the SUM formula is to calculate the total of a set of values in a row, column, or multiple ranges of cells.
+=SUM(number1, number2, ...)
+=SUM(A1:A10)
+
+============================================================================================================================
+
+
+How does the IF_FORMULA help in decision-making in Excel? Give an example.
+
+The IF formula in Excel is a logical function that helps in decision-making by evaluating a condition and returning one value if the condition is true and another if the condition is false.
+
+=IF(logical_test, value_if_true, value_if_false)
+=IF(B2>=5000, "Bonus Awarded", "No Bonus")
+============================================================================================================================
+
+What is the difference between VLOOKUP_FORMULA and HLOOKUP_FORMULA?
+
+The difference between VLOOKUP and HLOOKUP formulas in Excel lies in the direction in which they search for data within a table.
+
+VLOOKUP stands for "Vertical Lookup." It searches for a value in the first column of a table and returns a value from the same row, but from a specified column to the right.
+Direction of Search: Vertical (searches down columns).
+=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+=VLOOKUP("John", A2:B10, 2, FALSE)
+
+
+HLOOKUP stands for "Horizontal Lookup." It searches for a value in the first row of a table and returns a value from the same column, but from a specified row below.
+Direction of Search: Horizontal (searches across rows).
+=HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])
+=HLOOKUP("March", A1:L2, 2, FALSE)
+
+============================================================================================================================
+
+How does the AVERAGE_FORMULA calculate the average of a range? Provide an example.
+
+The AVERAGE formula in Excel calculates the arithmetic mean of a range of numbers by summing all the values in the range and then dividing the sum by the number of values.
+
+=AVERAGE(number1, [number2], ...)
+=AVERAGE(A1:A5)
+============================================================================================================================
+
+Dynamic Tables & Sorting:
+
+
+What are the benefits of using a dynamic table in Excel instead of a normal range?
+
+Using dynamic tables in Excel makes working with data more efficient, reduces errors, and enhances your ability to analyze and visualize data. 
+
+============================================================================================================================
+How can you sort a table by multiple columns in Excel?
+
+use Data ribbon --> sort --> select ascending or descending
+============================================================================================================================
+Filtering Data:
+
+What is the difference between basic filtering and advanced filtering in Excel?
+
+Select any cell in the range (or table) --> Go to the Data tab on the Ribbon and click Filter --> Use the dropdown arrow that appears in the column headers to filter based on a value, condition (e.g., greater than, less than), or text
+
+Set Up a Criteria Range: Define a criteria range that mirrors your table headers. The criteria range can include more complex conditions (such as using wildcards, multiple conditions with AND/OR logic).
+Open Advanced Filter --> Go to the Data tab and click on Advanced under the "Sort & Filter" group --> Select the Criteria Range: Specify the criteria range you created --> Choose Filter Option: Choose to either filter in place (filter the original data) or copy to another location (copy filtered data to a new range --> Click OK.
+============================================================================================================================
+How do you use a formula to filter data based on conditions?
+
+Using the same sales data, you can create a new helper column to identify rows where the Sales Amount is greater than $50,000:
+=IF(C2 > 50000, "Yes", "No")
+
+============================================================================================================================
+
+Charts in Excel:
+
+What are the steps to create a pivot chart in Excel, and why is it useful?
+
+Go to the Insert tab on the Ribbon.
+Click on the PivotTable button in the "Tables" group.
+Choose either to place the Pivot Table in a new worksheet or existing worksheet.
+Click OK.
+
+============================================================================================================================
+How can you make a chart dynamic so that it updates automatically when new data is added?
+
+
+Select your data range (including headers)
+Go to the Insert tab on the Ribbon.
+Click on Table in the "Tables" group.
+Ensure that the "My table has headers" box is checked, and click OK.
+
+============================================================================================================================
