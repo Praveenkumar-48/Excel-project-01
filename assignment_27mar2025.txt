@@ -1,0 +1,279 @@
+1. How can you use INDEX and MATCH together to perform a two-way lookup?
+
+	A			B		C
+1				Jan		Feb
+2	Product		50		60
+3	Sales		100		110
+4	Profit		30		40
+=MATCH("Product", A2:A4, 0) ----> it will return Product
+=MATCH("Feb", B1:C1, 0)		----> it will return Feb
+=INDEX(B2:C4, MATCH("Product", A2:A4, 0), MATCH("Feb", B1:C1, 0)) ----> will return 60
+
+---------------------------------------------------------------------------------------------------------------------
+
+2. What is the difference between VLOOKUP and XLOOKUP?
+
+VLOOKUP stands for "Vertical Lookup" and can only search for a value in the first column of a table (or range) and return a value from a column to the right of the lookup column.
+XLOOKUP is a more flexible and modern lookup function that can search for a value in any column (not just the first one) and return the corresponding value from any other column, to the right or left.
+
+=VLOOKUP("Banana", A2:B10, 2, FALSE)
+=XLOOKUP("Banana", A2:A10, B2:B10, "Not Found")
+
+VLOOKUP is simpler but has more limitations (e.g., only works left-to-right, fixed column index, more prone to errors).
+XLOOKUP is a more powerful, flexible, and user-friendly function that works in both directions and includes more advanced features like error handling and dynamic lookup arrays.
+
+---------------------------------------------------------------------------------------------------------------------
+
+3. How do you extract unique values from a list using formulas?
+
+Using unique function ---> =UNIQUE(A2:A10)
+Using unique function with sort ---> =SORT(UNIQUE(A2:A10))
+Using unique function with filter ---> =UNIQUE(FILTER(A2:A10, A2:A10>10))
+
+---------------------------------------------------------------------------------------------------------------------
+
+4. Explain how to use the INDIRECT function in dynamic range selection.
+
+The INDIRECT function is an excellent way to create dynamic references to ranges or cells based on text input, allowing for flexible range selection in formulas.
+=INDIRECT(ref_text, [a1])
+=SUM(INDIRECT(B1))
+
+---------------------------------------------------------------------------------------------------------------------
+
+5. How can you use the OFFSET function to create a dynamic named range?
+
+The OFFSET function returns a reference to a range that is a specific number of rows and columns from a starting reference.
+=OFFSET(reference, rows, cols, [height], [width])
+using the named range from formula ribbon we can use,
+
+---------------------------------------------------------------------------------------------------------------------
+
+6. What is an array formula, and how do you enter it in Excel?
+
+An array formula in Excel is a formula that can perform multiple calculations on one or more items in an array (range of cells) and return a single result or multiple results.
+=SUM(A1:A3 * B1:B3)
+The result will be the sum of the products of corresponding cells in the two ranges (e.g., (A1*B1) + (A2*B2) + (A3*B3)).
+
+---------------------------------------------------------------------------------------------------------------------
+
+7. Explain the use of SUMPRODUCT for conditional summing.
+
+Product	Sales	Region
+A		100		East
+B		200		West
+A		150		East
+C		300		West
+A		120		East
+
+=SUMPRODUCT((A2:A6 = "A") * B2:B6)
+
+(A2:A6 = "A") creates an array of TRUE and FALSE values (where TRUE is 1 and FALSE is 0) based on whether the value in A2:A6 equals "A".
+B2:B6 is the array of sales values.
+SUMPRODUCT multiplies each sales value in B2:B6 by the corresponding TRUE/FALSE (1/0) from (A2:A6 = "A").
+The result is the sum of sales for product "A": (100 + 150 + 120) = 370
+
+---------------------------------------------------------------------------------------------------------------------
+
+8. How do you use the AGGREGATE function, and why is it better than SUBTOTAL?
+9. How do you create a dependent drop-down list using Data Validation?
+
+Go to the Data tab on the Ribbon and click on Data Validation.
+In the Data Validation dialog box, choose List from the Allow dropdown.
+In the Source field, type the list of countries or select the range where your countries are listed.
+
+---------------------------------------------------------------------------------------------------------------------
+
+10. What is Power Query, and how do you use it for data transformation?
+11. Explain how to use Power Pivot for data modeling.
+12. What is a Pivot Table calculated field, and how do you create one?
+
+Step 1: Create a Pivot Table
+Before you can add a calculated field, you need to have a Pivot Table created.
+Select your data range (this could be a table of sales data, for example).
+Go to the Insert tab in the Ribbon and click on PivotTable.
+In the Create PivotTable dialog box, choose where you want to place the Pivot Table (in a new worksheet or an existing worksheet).
+Click OK. A blank Pivot Table will appear, and you can drag fields into the Rows, Columns, Values, and Filters areas.
+
+Step 2: Add a Calculated Field
+Once your Pivot Table is created, follow these steps to add a calculated field:
+Select the Pivot Table you’ve created.
+Go to the PivotTable Analyze tab on the Ribbon (or Options tab, depending on your Excel version).
+In the Calculations group, click on Fields, Items, & Sets.
+From the drop-down menu, select Calculated Field.
+This will open the Insert Calculated Field dialog box.
+
+Step 3: Define the Calculated Field
+In the Insert Calculated Field dialog box, you will define the calculation for your new field.
+Name the Field: In the Name field, give a name to your calculated field (e.g., "Profit").
+Create the Formula: In the Formula field, you can write the formula that uses other fields from the Pivot Table.
+---------------------------------------------------------------------------------------------------------------------
+
+13. How can you create a dynamic chart range using formulas?
+
+=OFFSET(starting_point, rows_to_move, cols_to_move, height, width)
+=OFFSET($B$2, 0, 0, COUNTA($A:$A)-1, 1)
+
+---------------------------------------------------------------------------------------------------------------------
+
+14. How do you use GETPIVOTDATA to extract data from a Pivot Table?
+
+The GETPIVOTDATA function in Excel is used to extract specific data from a Pivot Table.
+=GETPIVOTDATA(data_field, pivot_table, [field1, item1], [field2, item2], ...)
+=GETPIVOTDATA("Sum of Sales", $A$3, "Region", "East", "Month", "January")
+=GETPIVOTDATA("Sum of Sales", $A$3, "Region", "East", "Month", "January", "Product", "Product A")
+
+---------------------------------------------------------------------------------------------------------------------
+
+15. Explain how to use the LET function in Excel.
+
+The LET function in Excel is a powerful tool that allows you to assign names to calculation results within a formula. This can make your formulas easier to read, more efficient, and faster to calculate, especially when you're working with complex formulas or large datasets.
+
+=LET(name1, value1, [name2, value2], ..., calculation)
+=LET(length, A1, width, A2, length * width)
+
+---------------------------------------------------------------------------------------------------------------------
+
+16. How do you calculate a rolling average in Excel?
+
+using avg functions: =AVERAGE(A2:A4)
+
+---------------------------------------------------------------------------------------------------------------------
+
+17. How can you highlight an entire row based on a cell value using Conditional Formatting?
+
+Select the Entire Range of Rows:
+First, select the rows you want to apply conditional formatting to. For example, if you want to highlight entire rows from row 2 to row 10 based on a cell value, select the range from A2 to the last column of the row (e.g., Z10 or the last used column).
+Open Conditional Formatting:
+Go to the Home tab on the ribbon.
+Click on Conditional Formatting in the Styles group.
+Choose New Rule from the dropdown.
+Choose a Formula to Determine Which Cells to Format:
+In the New Formatting Rule dialog, select Use a formula to determine which cells to format.
+eg:
+=$A2>100
+
+---------------------------------------------------------------------------------------------------------------------
+
+18. Explain the use of the SEQUENCE function in Excel.
+
+The SEQUENCE function in Excel is an excellent tool for generating sequential numbers or arrays in a flexible, dynamic manner.
+
+=SEQUENCE(rows, [columns], [start], [step])
+
+=SEQUENCE(10)
+=SEQUENCE(2, 5)
+=SEQUENCE(5, 1, 100, 10)
+
+---------------------------------------------------------------------------------------------------------------------
+
+19. How do you perform a case-sensitive lookup in Excel?
+20. How can you find the second largest or nth largest value in a dataset?
+
+The LARGE function is a powerful tool for finding the nth largest value in a dataset.
+Use it with k = 2 to find the second largest value, or adjust k for other positions.
+It works well even with datasets that contain duplicates.
+
+=LARGE(array, k)
+=LARGE(A1:A10, 1)
+
+---------------------------------------------------------------------------------------------------------------------
+
+21. How do you create a heat map in Excel using Conditional Formatting?
+
+Sales
+50
+100
+150
+200
+250
+
+Select the range A2:A6.
+Go to Home → Conditional Formatting → Color Scales.
+Choose a 2-Color Scale or 3-Color Scale (e.g., Green - Yellow - Red Color Scale).
+The cells will now be shaded with a gradient of colors based on the sales values: low sales in green, high sales in red.
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+22. Explain how to use the TEXTJOIN function with a delimiter.
+
+The TEXTJOIN function in Excel allows you to combine (concatenate) multiple text values from a range or array, and it gives you the flexibility to insert a delimiter between the values
+
+TEXTJOIN(delimiter, ignore_empty, text1, [text2], ...)
+
+Name
+Alice
+Bob
+Charlie
+David
+
+=TEXTJOIN(", ", TRUE, A1:A4)
+Alice, Bob, Charlie, David
+
+---------------------------------------------------------------------------------------------------------------------
+
+23. How can you find and remove duplicates using formulas?
+
+to find and remove duplicates in Excel using formulas, you can use a combination of COUNTIF or IF functions to identify duplicates, and then filter or remove them as needed.
+
+Name	Status
+Alice	Unique
+Bob	Unique
+Charlie	Unique
+Bob	Duplicate
+David	Unique
+Alice	Duplicate
+
+=IF(COUNTIF(A$2:A$10, A2) > 1, "Duplicate", "Unique")
+
+---------------------------------------------------------------------------------------------------------------------
+
+24. How do you extract numbers from a mixed alphanumeric string?
+25. What is the difference between COUNTA and COUNTIF?
+
+Purpose: COUNTA counts the number of non-empty cells in a range, regardless of the type of content (text, numbers, dates, etc.).
+
+COUNTA(value1, [value2], ...)
+A
+123
+"Apple"
+(blank)
+45.6
+"Banana"
+
+=COUNTA(A1:A5)
+
+Purpose: COUNTIF counts the number of cells in a range that meet a specific condition or criteria. The condition can be based on a specific value, comparison, or even a wildcard pattern.
+
+COUNTIF(range, criteria)
+
+=COUNTIF(A1:A5, "Apple")
+=COUNTIF(A1:A5, ">50")
+
+---------------------------------------------------------------------------------------------------------------------
+26. How can you convert a date stored as text into a proper date format?
+27. How do you use the EOMONTH function for financial calculations?
+28. Explain how to use the UNIQUE function in Excel.
+29. How do you create a dynamic dashboard using Excel formulas?
+30. What are cube functions in Excel, and how are they used?
+31. Explain how to use the IFS function for multiple conditions.
+32. How can you generate a random sample from a dataset?
+33. How do you perform a weighted average calculation in Excel?
+34. How can you transpose data dynamically using formulas?
+35. What is a named range, and how do you use it in formulas?
+36. How do you use the NETWORKDAYS function to calculate working days?
+37. Explain how to use the FILTER function in Excel.
+38. How can you extract the domain name from an email address using formulas?
+39. How do you count words in a cell using Excel formulas?
+40. How do you create a drop-down list with search functionality?
+41. Explain how to use VBA to automate Excel tasks.
+42. How can you use Power Query to merge multiple tables?
+43. How do you apply advanced filtering using Excel formulas?
+44. Explain how to use the FORMULATEXT function.
+45. How can you calculate cumulative sums in Excel?
+46. How do you create a running total with conditions in Excel?
+47. Explain how to perform goal-seeking analysis in Excel.
+48. How do you use solver to optimize calculations in Excel?
+49. How do you apply scenario analysis using Data Tables?
+50. How can you use the CHOOSE function dynamically?
+
